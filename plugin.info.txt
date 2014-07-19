@@ -1,0 +1,7 @@
+base   agentscript
+author Rik Blok
+email  rik.blok@ubc.ca
+date   2014-07-19
+name   agentscript plugin
+desc   Add AgentScript, a minimalist Agent Based Modeling (ABM) framework, to your pages.
+url    https://www.dokuwiki.org/plugin:agentscript
