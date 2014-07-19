@@ -80,8 +80,10 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
             /** @var Doku_Renderer_xhtml $renderer */
             list($state,$match) = $data;
             switch ($state) {
-                case DOKU_LEXER_ENTER :      
-                    $renderer->doc .= '<script src="http://agentscript.org/lib/agentscript.js"></script><script src="http://agentscript.org/tools/coffee-script.js"></script><script type="text/coffeescript">'; 
+                case DOKU_LEXER_ENTER :
+				// got an "SyntaxError: unexpected & coffee-script.js:8" so let's try coffeescript.org directly, just to check. [Rik, 2014-07-18]
+//                    $renderer->doc .= '<script src="http://agentscript.org/lib/agentscript.js"></script><script src="http://agentscript.org/tools/coffee-script.js"></script><script type="text/coffeescript">'; 
+                    $renderer->doc .= '<script src="http://agentscript.org/lib/agentscript.js"></script><script src="http://coffeescript.org/extras/coffee-script.js"></script><script type="text/coffeescript">'; 
                     break;
                 case DOKU_LEXER_UNMATCHED :  
                     $renderer->doc .= $renderer->_xmlEntities($match); 
