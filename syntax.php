@@ -81,12 +81,14 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
             list($state,$match) = $data;
             switch ($state) {
                 case DOKU_LEXER_ENTER :
-				// got an "SyntaxError: unexpected & coffee-script.js:8" so let's try coffeescript.org directly, just to check. [Rik, 2014-07-18]
+				// got an "SyntaxError: unexpected & coffee-script.js:8" so let's try coffeescript.org directly, just to check. Nope. Error still occurs -- look elsewhere. [Rik, 2014-07-18]
 //                    $renderer->doc .= '<script src="http://agentscript.org/lib/agentscript.js"></script><script src="http://agentscript.org/tools/coffee-script.js"></script><script type="text/coffeescript">'; 
                     $renderer->doc .= '<script src="http://agentscript.org/lib/agentscript.js"></script><script src="http://coffeescript.org/extras/coffee-script.js"></script><script type="text/coffeescript">'; 
                     break;
                 case DOKU_LEXER_UNMATCHED :  
-                    $renderer->doc .= $renderer->_xmlEntities($match); 
+				// maybe cleaning the text is causing problems, eg. adding "&ampersand;" [Rik, 2014-07-18]
+//                    $renderer->doc .= $renderer->_xmlEntities($match); 
+                    $renderer->doc .= $match; 
                     break;
                 case DOKU_LEXER_EXIT :       
                     $renderer->doc .= "</script>"; 
