@@ -91,7 +91,7 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
                 case DOKU_LEXER_EXIT :       
 				//  TypeError: null has no properties agentscript.js:3240.  Missing layers div? [Rik, 2014-07-18]
 //                    $renderer->doc .= "</script>"; 
-                    $renderer->doc .= "</script><div id="layers"></div>"; 
+                    $renderer->doc .= '</script><div id="layers"></div>'; 
                     break;
             }
             return true;
