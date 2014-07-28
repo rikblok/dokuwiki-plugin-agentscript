@@ -95,7 +95,7 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
                     $renderer->doc .= '</script>' .
 						'<div id="agentscriptwrapper">' .
 						'<div id="layers"></div>' .
-						'<button id="test_button">Restart</button>' . // ReferenceError: model is not defined [2014-07-27]
+						'<button id="test_button" onclick="test_restart()">Restart</button>' . // ReferenceError: model is not defined [2014-07-27]
 						'</div>'; 
                     break;
             }
