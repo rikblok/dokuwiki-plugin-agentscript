@@ -81,14 +81,7 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
             list($state,$match) = $data;
             switch ($state) {
                 case DOKU_LEXER_ENTER :
-                    $renderer->doc .= '<div id="playback-controls">' .
-						'<ul><li><button id="reset-button">Reset</button></li>' .
-						'<li><button id="play-button">Play</button></li>' .
-						'<li><button id="step-button">Step</button></li>' .
-						'<li><button id="stop-button">Stop</button></li>' .
-						'<li>Model Ticks: <span id="tick-counter"></span></li></ul>' .
-						'</div>' .
-						'<script src="http://agentscript.org/lib/agentscript.js"></script>' .
+                    $renderer->doc .= '<script src="http://agentscript.org/lib/agentscript.js"></script>' .
 						'<script src="http://agentscript.org/tools/dat.gui.min.js"></script>' .
 						'<script src="http://agentscript.org/lib/as.dat.gui.js"></script>' .
 						'<script src="http://agentscript.org/tools/coffee-script.js"></script>' .
@@ -102,7 +95,19 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
                     $renderer->doc .= '</script>' .
 						'<div id="agentscriptwrapper">' . // interface ideas from https://github.com/concord-consortium/agentscript-models/blob/master/solar-panel/solar-panel-2.0.html [2014-07-27]
 						'<canvas id="canvas" >Your browser does not support HTML5 Canvas.</canvas>' .
-						'<div id="layers"></div>';
+						'<div id="layers"></div>' .
+						'<div id="playback-controls">' .
+						//'<ul><li><button id="reset-button">Reset</button></li>' .
+						'<li><button id="play-button">Play</button></li>' .
+						//'<li><button id="step-button">Step</button></li>' .
+						'<li><button id="stop-button">Stop</button></li>' .
+						//'<li>Model Ticks: <span id="tick-counter"></span></li></ul>' .
+						'</div>' .
+						'<script>' .
+						'playButton = document.getElementById("play-button"),' .
+						'stopButton = document.getElementById("stop-button");' .
+						'playButton.onclick = function() {ABM.model.start();}' .
+						'stopButton.onclick = function() {ABM.model.stop();}';
                     break;
             }
             return true;
