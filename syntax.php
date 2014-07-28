@@ -81,10 +81,10 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
             list($state,$match) = $data;
             switch ($state) {
                 case DOKU_LEXER_ENTER :
-                    $renderer->doc .= '<script src="http://agentscript.org/lib/agentscript.js"></script>'
-						'<script src="../tools/dat.gui.min.js"></script>'
-						'<script src="../lib/as.dat.gui.js"></script>'
-						'<script src="http://agentscript.org/tools/coffee-script.js"></script>'
+                    $renderer->doc .= '<script src="http://agentscript.org/lib/agentscript.js"></script>' .
+						'<script src="http://agentscript.org/tools/dat.gui.min.js"></script>' .
+						'<script src="http://agentscript.org/lib/as.dat.gui.js"></script>' .
+						'<script src="http://agentscript.org/tools/coffee-script.js"></script>' .
 						'<script type="text/coffeescript">'; 
                     break;
                 case DOKU_LEXER_UNMATCHED :  
