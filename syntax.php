@@ -89,13 +89,14 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
                     break;
                 case DOKU_LEXER_UNMATCHED :  
 				// don't clean the text. It breaks Javascript. [Rik, 2014-07-27]
-                    $renderer->doc .= $match; 
+                    $renderer->doc .= $match;
                     break;
                 case DOKU_LEXER_EXIT :       
-                    $renderer->doc .= '</script>' .
+                    $renderer->doc .= "$('#test_button').click(model.start)" .
+						'</script>' .
 						'<div id="agentscriptwrapper">' .
 						'<div id="layers"></div>' .
-						'<button onclick="ABM.model.start()">Restart</button>' . // ReferenceError: model is not defined [2014-07-27]
+						'<button id="test_button">Restart</button>' . // ReferenceError: model is not defined [2014-07-27]
 						'</div>'; 
                     break;
             }
