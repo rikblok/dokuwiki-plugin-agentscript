@@ -92,8 +92,7 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
                     $renderer->doc .= $match;
                     break;
                 case DOKU_LEXER_EXIT :       
-                    $renderer->doc .= "$('#test_button').click(model.start)" .
-						'</script>' .
+                    $renderer->doc .= '</script>' .
 						'<div id="agentscriptwrapper">' .
 						'<div id="layers"></div>' .
 						'<button id="test_button">Restart</button>' . // ReferenceError: model is not defined [2014-07-27]
