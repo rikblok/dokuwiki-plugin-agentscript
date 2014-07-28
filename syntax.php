@@ -104,8 +104,8 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
 						//'<li>Model Ticks: <span id="tick-counter"></span></li></ul>' .
 						'</div>' .
 						'<script>' .
-						'playButton = document.getElementById("play-button"),' .
-						'stopButton = document.getElementById("stop-button");' .
+						'var playButton = document.getElementById("play-button"),' .
+						'	stopButton = document.getElementById("stop-button");' .
 						'playButton.onclick = function() {ABM.model.start();}' .
 						'stopButton.onclick = function() {ABM.model.stop();}' .
 						'</script>';
