@@ -93,9 +93,16 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
                     break;
                 case DOKU_LEXER_EXIT :       
                     $renderer->doc .= '</script>' .
-						'<div id="agentscriptwrapper">' .
+						'<div id="agentscriptwrapper">' . // interface ideas from https://github.com/concord-consortium/agentscript-models/blob/master/solar-panel/solar-panel-2.0.html [2014-07-27]
+						'<canvas id="canvas" >Your browser does not support HTML5 Canvas.</canvas>' .
 						'<div id="layers"></div>' .
 						'<button id="test_button" onclick="test_restart()">Restart</button>' . // ReferenceError: model is not defined [2014-07-27]
+						'<div id="playback-controls">' .
+						'<ul><li><button id="reset-button">Reset</button></li>' .
+						'<li><button id="play-button">Play</button></li>' .
+						'<li><button id="step-button">Step</button></li>' .
+						'<li><button id="stop-button">Stop</button></li>' .
+						'<li>Model Ticks: <span id="tick-counter"></span></li></ul>' .
 						'</div>'; 
                     break;
             }
