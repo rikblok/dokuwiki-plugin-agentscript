@@ -91,9 +91,9 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
 				// don't clean the text. It breaks Javascript. [Rik, 2014-07-27]
                     $renderer->doc .= $match;
                     break;
-                case DOKU_LEXER_EXIT :       
+                case DOKU_LEXER_EXIT :        // interface ideas from https://github.com/concord-consortium/agentscript-models/blob/master/solar-panel/solar-panel-2.0.html [2014-07-27]
                     $renderer->doc .= '</script>' .
-						'<div id="agentscriptwrapper">' . // interface ideas from https://github.com/concord-consortium/agentscript-models/blob/master/solar-panel/solar-panel-2.0.html [2014-07-27]
+						'<div id="agentscriptwrapper">' .
 						'<canvas id="canvas" >Your browser does not support HTML5 Canvas.</canvas>' .
 						'<div id="layers"></div>' .
 						'<div id="playback-controls">' .
@@ -103,12 +103,12 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
 						'<li><button id="stop-button">Stop</button></li>' .
 						//'<li>Model Ticks: <span id="tick-counter"></span></li></ul>' .
 						'</div>' .
-						'<script>' .
-						'var playButton = document.getElementById("play-button"),' .
-						'	stopButton = document.getElementById("stop-button");' .
-						'playButton.onclick = function() {ABM.model.start();}' .
-						'stopButton.onclick = function() {ABM.model.stop();}' .
-						'</script>';
+						'<script>
+						var playButton = document.getElementById("play-button"),
+							stopButton = document.getElementById("stop-button");
+						playButton.onclick = function() {ABM.model.start();}
+						stopButton.onclick = function() {ABM.model.stop();}
+						</script>';
                     break;
             }
             return true;
