@@ -107,7 +107,8 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
 						'playButton = document.getElementById("play-button"),' .
 						'stopButton = document.getElementById("stop-button");' .
 						'playButton.onclick = function() {ABM.model.start();}' .
-						'stopButton.onclick = function() {ABM.model.stop();}';
+						'stopButton.onclick = function() {ABM.model.stop();}' .
+						'</script>';
                     break;
             }
             return true;
