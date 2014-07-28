@@ -81,16 +81,17 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
             list($state,$match) = $data;
             switch ($state) {
                 case DOKU_LEXER_ENTER :
-                    $renderer->doc .= '<script src="http://agentscript.org/lib/agentscript.js"></script><script src="http://agentscript.org/tools/coffee-script.js"></script><script type="text/coffeescript">'; 
+                    $renderer->doc .= '<script src="http://agentscript.org/lib/agentscript.js"></script>'
+						'<script src="../tools/dat.gui.min.js"></script>'
+						'<script src="../lib/as.dat.gui.js"></script>'
+						'<script src="http://agentscript.org/tools/coffee-script.js"></script>'
+						'<script type="text/coffeescript">'; 
                     break;
                 case DOKU_LEXER_UNMATCHED :  
-				// maybe cleaning the text is causing problems, eg. adding "&ampersand;" [Rik, 2014-07-18]
-//                    $renderer->doc .= $renderer->_xmlEntities($match); 
+				// don't clean the text. It breaks Javascript. [Rik, 2014-07-27]
                     $renderer->doc .= $match; 
                     break;
                 case DOKU_LEXER_EXIT :       
-				//  TypeError: null has no properties agentscript.js:3240.  Missing layers div? [Rik, 2014-07-18]
-//                    $renderer->doc .= "</script>"; 
                     $renderer->doc .= '</script><div id="layers"></div>'; 
                     break;
             }
