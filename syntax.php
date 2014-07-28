@@ -92,7 +92,11 @@ class syntax_plugin_agentscript extends DokuWiki_Syntax_Plugin {
                     $renderer->doc .= $match; 
                     break;
                 case DOKU_LEXER_EXIT :       
-                    $renderer->doc .= '</script><div id="layers"></div>'; 
+                    $renderer->doc .= '</script>' .
+						'<div id="agentscriptwrapper">' .
+						'<div id="layers"></div>' .
+						'<button onclick="model.start()">Restart</button>' .
+						'</div>'; 
                     break;
             }
             return true;
